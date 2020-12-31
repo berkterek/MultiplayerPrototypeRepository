@@ -48,9 +48,9 @@ namespace MultiplayerPrototype.Controllers
             _canJump = _jump.TickFixed(_jumpForce, _canJump);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnCollisionEnter(Collision other)
         {
-            IEntityController entityController = other.GetComponent<IEntityController>();
+            IEntityController entityController = other.collider.GetComponent<IEntityController>();
 
             if (entityController != null)
             {
