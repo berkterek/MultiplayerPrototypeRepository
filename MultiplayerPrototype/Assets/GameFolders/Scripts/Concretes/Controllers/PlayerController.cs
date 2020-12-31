@@ -5,6 +5,7 @@ using MultiplayerPrototype.Abstracts.Controllers;
 using MultiplayerPrototype.Abstracts.Inputs;
 using MultiplayerPrototype.Abstracts.Movements;
 using MultiplayerPrototype.Inputs;
+using MultiplayerPrototype.Managers;
 using MultiplayerPrototype.Movements;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace MultiplayerPrototype.Controllers
         IJump _jump;
         float _horizontal;
         bool _canJump;
+        bool _isDead;
 
         private void Awake()
         {
@@ -30,6 +32,8 @@ namespace MultiplayerPrototype.Controllers
 
         private void Update()
         {
+            if (_isDead) return;
+            
             _horizontal = _input.Horizontal;
 
             if (_input.IsJump)
@@ -42,6 +46,17 @@ namespace MultiplayerPrototype.Controllers
         {
             _move.TickFixed(_horizontal,_moveSpeed);
             _canJump = _jump.TickFixed(_jumpForce, _canJump);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            IEntityController entityController = other.GetComponent<IEntityController>();
+
+            if (entityController != null)
+            {
+                _isDead = true;
+                GameManager.Instance.GameOver();
+            }
         }
     }
 }

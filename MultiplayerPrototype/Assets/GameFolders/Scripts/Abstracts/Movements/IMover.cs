@@ -6,6 +6,6 @@ namespace MultiplayerPrototype.Abstracts.Movements
 {
     public interface IMover
     {
-        void TickFixed(float horizontal, float moveSpeed);
+        void TickFixed(float direction, float moveSpeed);
     }
 }
