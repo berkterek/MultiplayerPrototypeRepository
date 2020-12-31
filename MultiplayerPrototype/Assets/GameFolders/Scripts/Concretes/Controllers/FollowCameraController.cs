@@ -10,17 +10,17 @@ namespace MultiplayerPrototype.Controllers
     public class FollowCameraController : MonoBehaviour
     {
         CinemachineVirtualCamera _camera;
-        IPlayerController _playerController;
+        IEntityController _entityController;
         
         private void Awake()
         {
             _camera = GetComponent<CinemachineVirtualCamera>();
-            _playerController = FindObjectOfType<PlayerController>();
+            _entityController = FindObjectOfType<EntityController>();
         }
 
         private void Start()
         {
-            _camera.Follow = _playerController.transform;
+            _camera.Follow = _entityController.transform;
         }
     }    
 }

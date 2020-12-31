@@ -10,9 +10,9 @@ namespace MultiplayerPrototype.Movements
     {
         private Rigidbody _rigidbody;
 
-        public JumpPhysics(IPlayerController playerController)
+        public JumpPhysics(IEntityController entityController)
         {
-            _rigidbody = playerController.transform.GetComponent<Rigidbody>();
+            _rigidbody = entityController.transform.GetComponent<Rigidbody>();
         }
 
         public bool TickFixed(float jumpForce, bool canJump)

@@ -8,22 +8,22 @@ namespace MultiplayerPrototype.Movements
 {
     public class HorizontalMove : IMover
     {
-        private IPlayerController _playerController;
+        private IEntityController _entityController;
         int _minMaxBoudary = 4;
 
-        public HorizontalMove(IPlayerController playerController)
+        public HorizontalMove(IEntityController entityController)
         {
-            _playerController = playerController;
+            _entityController = entityController;
         }
 
         public void TickFixed(float horizontal, float moveSpeed)
         {
             if (horizontal == 0f) return;
 
-            _playerController.transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * horizontal);
+            _entityController.transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * horizontal);
             
-            float xBoundary = Mathf.Clamp(_playerController.transform.position.x, -_minMaxBoudary, _minMaxBoudary);
-            _playerController.transform.position = new Vector3(xBoundary, _playerController.transform.position.y, 0f);
+            float xBoundary = Mathf.Clamp(_entityController.transform.position.x, -_minMaxBoudary, _minMaxBoudary);
+            _entityController.transform.position = new Vector3(xBoundary, _entityController.transform.position.y, 0f);
         }
     }    
 }

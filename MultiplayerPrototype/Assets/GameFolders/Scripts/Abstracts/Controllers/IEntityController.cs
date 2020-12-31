@@ -2,7 +2,7 @@
 
 namespace MultiplayerPrototype.Abstracts.Controllers
 {
-    public interface IPlayerController
+    public interface IEntityController
     {
         Transform transform { get; }
     }    
