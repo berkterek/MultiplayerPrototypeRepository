@@ -15,7 +15,7 @@ namespace MultiplayerPrototype.Controllers
         private void Awake()
         {
             _camera = GetComponent<CinemachineVirtualCamera>();
-            _entityController = FindObjectOfType<EntityController>();
+            _entityController = FindObjectOfType<PlayerController>();
         }
 
         private void Start()

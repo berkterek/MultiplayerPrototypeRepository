@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace MultiplayerPrototype.Controllers
 {
-    public class EntityController : MonoBehaviour, IEntityController
+    public class PlayerController : MonoBehaviour, IEntityController
     {
         [SerializeField] float _jumpForce = 300f;
         [SerializeField] float _moveSpeed = 10f;
