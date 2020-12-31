@@ -1,0 +1,74 @@
+{
+    "name": "DefaultControls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "1f27ad48-ed4f-419f-b5e3-e7c5750e3c69",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "481bedda-929d-41a5-b7e9-13ba71d1349c",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "bdc00bde-4444-476e-8672-1a522408d55d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "KeyboardLeftRight",
+                    "id": "f9165690-8422-4e64-8ca0-9f43b032d37f",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "97b97bad-9551-45cf-975e-8153cd9e3e88",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "79e2321d-41c4-4508-a208-d989990c37c4",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "650fcf9f-2d38-44c2-9459-a3738df28e2d",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Tap(duration=0.1,pressPoint=0.2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
