@@ -10,18 +10,17 @@ namespace MultiplayerPrototype.Movements
     {
         private IPlayerController _playerController;
         int _minMaxBoudary = 4;
-        float _moveSpeed = 10f;
 
         public HorizontalMove(IPlayerController playerController)
         {
             _playerController = playerController;
         }
 
-        public void TickFixed(float horizontal)
+        public void TickFixed(float horizontal, float moveSpeed)
         {
             if (horizontal == 0f) return;
 
-            _playerController.transform.Translate(Vector3.right * Time.deltaTime * _moveSpeed * horizontal);
+            _playerController.transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * horizontal);
             
             float xBoundary = Mathf.Clamp(_playerController.transform.position.x, -_minMaxBoudary, _minMaxBoudary);
             _playerController.transform.position = new Vector3(xBoundary, _playerController.transform.position.y, 0f);

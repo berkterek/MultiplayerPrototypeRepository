@@ -12,7 +12,8 @@ namespace MultiplayerPrototype.Controllers
 {
     public class PlayerController : MonoBehaviour, IPlayerController
     {
-        [SerializeField] float _jumpForce;
+        [SerializeField] float _jumpForce = 300f;
+        [SerializeField] float _moveSpeed = 10f;
 
         IPlayerInput _input;
         IMover _move;
@@ -39,7 +40,7 @@ namespace MultiplayerPrototype.Controllers
 
         private void FixedUpdate()
         {
-            _move.TickFixed(_horizontal);
+            _move.TickFixed(_horizontal,_moveSpeed);
             _canJump = _jump.TickFixed(_jumpForce, _canJump);
         }
     }
