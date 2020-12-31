@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using MultiplayerPrototype.Abstracts.Controllers;
 using MultiplayerPrototype.Abstracts.Inputs;
+using MultiplayerPrototype.Abstracts.Movements;
 using MultiplayerPrototype.Inputs;
 using MultiplayerPrototype.Movements;
 using UnityEngine;
@@ -12,10 +13,10 @@ namespace MultiplayerPrototype.Controllers
     public class PlayerController : MonoBehaviour, IPlayerController
     {
         [SerializeField] float _jumpForce;
-        
+
         IPlayerInput _input;
-        HorizontalMove _move;
-        JumpPhysics _jump;
+        IMover _move;
+        IJump _jump;
         float _horizontal;
         bool _canJump;
 
@@ -30,8 +31,6 @@ namespace MultiplayerPrototype.Controllers
         {
             _horizontal = _input.Horizontal;
 
-            Debug.Log(_input.IsJump);
-            
             if (_input.IsJump)
             {
                 _canJump = true;
@@ -41,9 +40,7 @@ namespace MultiplayerPrototype.Controllers
         private void FixedUpdate()
         {
             _move.TickFixed(_horizontal);
-            _jump.TickFixed(_jumpForce, _canJump);
-            
-            _canJump = false;
+            _canJump = _jump.TickFixed(_jumpForce, _canJump);
         }
     }
 }

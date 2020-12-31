@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MultiplayerPrototype.Abstracts.Controllers;
+using MultiplayerPrototype.Abstracts.Movements;
 using UnityEngine;
 
 namespace MultiplayerPrototype.Movements
 {
-    public class JumpPhysics
+    public class JumpPhysics : IJump
     {
         private Rigidbody _rigidbody;
 
@@ -14,12 +15,14 @@ namespace MultiplayerPrototype.Movements
             _rigidbody = playerController.transform.GetComponent<Rigidbody>();
         }
 
-        public void TickFixed(float jumpForce, bool canJump)
+        public bool TickFixed(float jumpForce, bool canJump)
         {
-            if (_rigidbody.velocity != Vector3.zero || !canJump) return;
+            if (_rigidbody.velocity != Vector3.zero || !canJump) return false;
 
             _rigidbody.velocity = Vector3.zero;
             _rigidbody.AddForce(Vector3.up * jumpForce);
+
+            return false;
         }
     }
 }

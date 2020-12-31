@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MultiplayerPrototype.Abstracts.Controllers;
+using MultiplayerPrototype.Abstracts.Movements;
 using UnityEngine;
 
 namespace MultiplayerPrototype.Movements
 {
-    public class HorizontalMove
+    public class HorizontalMove : IMover
     {
         private IPlayerController _playerController;
         int _minMaxBoudary = 4;
