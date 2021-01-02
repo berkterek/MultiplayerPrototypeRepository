@@ -13,8 +13,9 @@ namespace MultiplayerPrototype.Managers
         int _difficultyIndex;
         
         public static GameManager Instance { get; set; }
-        public event System.Action<int> OnGameOver;
         public LevelDifficultyData LevelDifficultyData => _levelDifficultyDatas[_difficultyIndex];
+        public event System.Action<int> OnGameOver;
+        public event System.Action<bool> OnSceneChanged;
 
         private void Awake()
         {
@@ -44,11 +45,13 @@ namespace MultiplayerPrototype.Managers
         {
             _difficultyIndex = index;
             StartCoroutine(LoadMySceneAsync("Menu","Game"));
+            OnSceneChanged?.Invoke(true);
         }
         
         public void Menu()
         {
             StartCoroutine(LoadMySceneAsync("Game","Menu"));
+            OnSceneChanged?.Invoke(false);
         }
 
         private IEnumerator LoadMySceneAsync(string from, string to)
