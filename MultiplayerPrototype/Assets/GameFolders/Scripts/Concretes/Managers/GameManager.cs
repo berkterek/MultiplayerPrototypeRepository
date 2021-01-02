@@ -16,6 +16,11 @@ namespace MultiplayerPrototype.Managers
             SingletonObject();
         }
 
+        private IEnumerator Start()
+        {
+            yield return SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Additive);
+        }
+
         private void SingletonObject()
         {
             if (Instance == null)
@@ -29,15 +34,38 @@ namespace MultiplayerPrototype.Managers
             }
         }
 
-        public void Restart()
+        public void StartGame()
         {
-            Time.timeScale = 1f;
-            StartCoroutine(RestartAsync());
+            StartCoroutine(LoadMySceneAsync("Menu","Game"));
+        }
+        
+        public void Menu()
+        {
+            StartCoroutine(LoadMySceneAsync("Game","Menu"));
         }
 
-        private IEnumerator RestartAsync()
+        private IEnumerator LoadMySceneAsync(string from, string to)
         {
-            yield return SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            Time.timeScale = 1f;
+
+            if (SceneManager.GetSceneByName(from).name != null)
+            {
+                yield return SceneManager.UnloadSceneAsync(from);    
+            }
+
+            if (SceneManager.GetSceneByName(to).name != null)
+            {
+                yield return SceneManager.UnloadSceneAsync(to);
+            }
+            
+            yield return SceneManager.LoadSceneAsync(to, LoadSceneMode.Additive);
+            
+            yield return null;
+        }
+
+        public void Exit()
+        {
+            Application.Quit();
         }
 
         public void GameOver()

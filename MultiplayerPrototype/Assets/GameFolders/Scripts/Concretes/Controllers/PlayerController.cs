@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using MultiplayerPrototype.Abstracts.Controllers;
 using MultiplayerPrototype.Abstracts.Inputs;
@@ -48,9 +47,9 @@ namespace MultiplayerPrototype.Controllers
             _canJump = _jump.TickFixed(_jumpForce, _canJump);
         }
 
-        private void OnCollisionEnter(Collision other)
+        private void OnTriggerEnter(Collider other)
         {
-            IEntityController entityController = other.collider.GetComponent<IEntityController>();
+            IEnemyController entityController = other.GetComponent<IEnemyController>();
 
             if (entityController != null)
             {
