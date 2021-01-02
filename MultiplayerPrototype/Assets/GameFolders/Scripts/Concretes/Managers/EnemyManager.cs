@@ -11,16 +11,24 @@ namespace MultiplayerPrototype.Managers
     {
         [SerializeField] EnemyController[] _enemyPrefabs;
 
+        float _moveSpeed = 10f;
+        float _newEnemytime;
+
         private static Dictionary<EnemyEnum, Queue<IEnemyController>> _enemies =
             new Dictionary<EnemyEnum, Queue<IEnemyController>>();
 
         public int Count => _enemies.Count;
 
         public static EnemyManager Instance { get; private set; }
+        public float NewEnemyTime => _newEnemytime;
 
         private void Awake()
         {
             SingletonThisGameObject();
+        }
+
+        private void Start()
+        {
             InitializePool();
         }
 
@@ -48,6 +56,7 @@ namespace MultiplayerPrototype.Managers
                     IEnemyController newEnemy = Instantiate(_enemyPrefabs[i]);
                     newEnemy.transform.parent = this.transform;
                     newEnemy.transform.gameObject.SetActive(false);
+                    newEnemy.SetSpeed(_moveSpeed);
                     queue.Enqueue(newEnemy);
                 }
 
@@ -74,7 +83,20 @@ namespace MultiplayerPrototype.Managers
                 enemyQueue.Enqueue(newEnemy);
             }
 
-            return enemyQueue.Dequeue();
+            IEnemyController enemy = enemyQueue.Dequeue();
+            enemy.SetSpeed(_moveSpeed);
+
+            return enemy;
+        }
+
+        public void SetEnemiesMoveSpeed(float moveSpeed)
+        {
+            _moveSpeed = moveSpeed;
+        }
+
+        public void SetNewEnemyTime(float time)
+        {
+            _newEnemytime = time;
         }
     }
 }

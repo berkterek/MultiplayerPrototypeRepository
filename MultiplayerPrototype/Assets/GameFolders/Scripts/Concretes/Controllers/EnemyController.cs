@@ -11,7 +11,7 @@ namespace MultiplayerPrototype.Controllers
 {
     public class EnemyController : MonoBehaviour, IEnemyController
     {
-        [SerializeField] float _moveSpeed = 10f;
+        [SerializeField] float _moveSpeed;
         [SerializeField] float _maxLifeTime = 10f;
         [SerializeField] EnemyEnum _enemyEnum;
         
@@ -41,6 +41,10 @@ namespace MultiplayerPrototype.Controllers
             _mover.TickFixed(-1, _moveSpeed);
         }
 
+        public void SetSpeed(float moveSpeed)
+        {
+            _moveSpeed = moveSpeed;
+        }
         
         private void KillYourself()
         {

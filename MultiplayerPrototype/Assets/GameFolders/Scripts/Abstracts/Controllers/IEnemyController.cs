@@ -8,6 +8,7 @@ namespace MultiplayerPrototype.Abstracts.Controllers
     public interface IEnemyController : IEntityController
     {
         EnemyEnum EnemyEnum { get; }
+        void SetSpeed(float moveSpeed);
     }    
 }
 

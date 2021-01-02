@@ -20,6 +20,8 @@ namespace MultiplayerPrototype.Controllers
             RenderSettings.skybox = _levelDifficultyData.SkyBox;
             Instantiate(_levelDifficultyData.FloorController);
             Instantiate(_levelDifficultyData.Spawners);
+            _levelDifficultyData.SetMoveSpeed();
+            EnemyManager.Instance.SetNewEnemyTime(_levelDifficultyData.NewEnemyTime);
         }
     }    
 }

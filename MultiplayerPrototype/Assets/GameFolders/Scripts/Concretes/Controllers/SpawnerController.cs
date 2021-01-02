@@ -4,6 +4,7 @@ using MultiplayerPrototype.Abstracts.Controllers;
 using MultiplayerPrototype.Enums;
 using MultiplayerPrototype.Managers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MultiplayerPrototype.Controllers
 {
@@ -17,12 +18,18 @@ namespace MultiplayerPrototype.Controllers
         float _currentSpawnTime;
         float _currentLevelTime;
         int _index;
+        float _newEnemyTime;
 
         public float RandomSpawnTime => Random.Range(min, max);
 
         private void Awake()
         {
             _maxDelayTime = RandomSpawnTime;
+        }
+
+        private void Start()
+        {
+            _newEnemyTime = EnemyManager.Instance.NewEnemyTime;
         }
 
         private void Update()
@@ -39,7 +46,7 @@ namespace MultiplayerPrototype.Controllers
 
             if (_currentLevelTime < Time.time)
             {
-                _currentLevelTime = Time.time + 60f;
+                _currentLevelTime = Time.time + _newEnemyTime;
                 SetNewEnemyIndex();
             }
         }

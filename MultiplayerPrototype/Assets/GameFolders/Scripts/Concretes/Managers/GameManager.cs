@@ -24,6 +24,7 @@ namespace MultiplayerPrototype.Managers
         private IEnumerator Start()
         {
             yield return SceneManager.LoadSceneAsync("Menu", LoadSceneMode.Additive);
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Menu"));
         }
 
         private void SingletonObject()

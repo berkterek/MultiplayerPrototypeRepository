@@ -60,7 +60,7 @@
                     "name": "",
                     "id": "650fcf9f-2d38-44c2-9459-a3738df28e2d",
                     "path": "<Keyboard>/space",
-                    "interactions": "Tap(duration=0.1,pressPoint=0.2)",
+                    "interactions": "Tap(duration=0.01,pressPoint=0.02)",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
