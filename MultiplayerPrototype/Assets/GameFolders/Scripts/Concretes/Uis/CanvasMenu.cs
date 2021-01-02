@@ -9,7 +9,7 @@ namespace MultiplayerPrototype.Uis
     {
         public void StartButton(int index)
         {
-            GameManager.Instance.StartGame();
+            GameManager.Instance.StartGame(index);
         }
 
         public void ExitButton()

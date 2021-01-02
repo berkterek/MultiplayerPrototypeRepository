@@ -13,9 +13,7 @@ namespace MultiplayerPrototype.Managers
         int _difficultyIndex;
         
         public static GameManager Instance { get; set; }
-
-        public event System.Action OnGameOver;
-
+        public event System.Action<int> OnGameOver;
         public LevelDifficultyData LevelDifficultyData => _levelDifficultyDatas[_difficultyIndex];
 
         private void Awake()
@@ -41,7 +39,7 @@ namespace MultiplayerPrototype.Managers
             }
         }
 
-        public void StartGame(int index = 0)
+        public void StartGame(int index)
         {
             _difficultyIndex = index;
             StartCoroutine(LoadMySceneAsync("Menu","Game"));
@@ -67,8 +65,7 @@ namespace MultiplayerPrototype.Managers
             }
             
             yield return SceneManager.LoadSceneAsync(to, LoadSceneMode.Additive);
-            
-            yield return null;
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName(to));
         }
 
         public void Exit()
@@ -78,7 +75,7 @@ namespace MultiplayerPrototype.Managers
 
         public void GameOver()
         {
-            OnGameOver?.Invoke();
+            OnGameOver?.Invoke(_difficultyIndex);
             Time.timeScale = 0f;
         }
     }    

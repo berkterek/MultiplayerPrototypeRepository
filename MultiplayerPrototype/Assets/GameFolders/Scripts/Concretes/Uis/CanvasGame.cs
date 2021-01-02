@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using MultiplayerPrototype.Managers;
 using UnityEngine;
@@ -9,6 +8,7 @@ namespace MultiplayerPrototype.Uis
     public class CanvasGame : MonoBehaviour
     {
         [SerializeField] GameObject _gameOverPanel;
+        int _index;
 
         private void OnEnable()
         {
@@ -22,7 +22,7 @@ namespace MultiplayerPrototype.Uis
 
         public void YesButton()
         {
-            GameManager.Instance.StartGame();
+            GameManager.Instance.StartGame(_index);
             _gameOverPanel.SetActive(false);
         }
 
@@ -32,9 +32,10 @@ namespace MultiplayerPrototype.Uis
             _gameOverPanel.SetActive(false);
         }
         
-        private void HandleOnOnGameOver()
+        private void HandleOnOnGameOver(int index)
         {
             _gameOverPanel.SetActive(true);
+            _index = index;
         }
     }    
 }
