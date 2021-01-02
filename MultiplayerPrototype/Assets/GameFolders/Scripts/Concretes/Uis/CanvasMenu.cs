@@ -7,9 +7,7 @@ namespace MultiplayerPrototype.Uis
 {
     public class CanvasMenu : MonoBehaviour
     {
-        [SerializeField] GameObject _menuPanel;
-
-        public void StartButton()
+        public void StartButton(int index)
         {
             GameManager.Instance.StartGame();
         }

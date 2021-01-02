@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MultiplayerPrototype.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,9 +8,15 @@ namespace MultiplayerPrototype.Managers
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] LevelDifficultyData[] _levelDifficultyDatas;
+
+        int _difficultyIndex;
+        
         public static GameManager Instance { get; set; }
 
         public event System.Action OnGameOver;
+
+        public LevelDifficultyData LevelDifficultyData => _levelDifficultyDatas[_difficultyIndex];
 
         private void Awake()
         {
@@ -34,8 +41,9 @@ namespace MultiplayerPrototype.Managers
             }
         }
 
-        public void StartGame()
+        public void StartGame(int index = 0)
         {
+            _difficultyIndex = index;
             StartCoroutine(LoadMySceneAsync("Menu","Game"));
         }
         
