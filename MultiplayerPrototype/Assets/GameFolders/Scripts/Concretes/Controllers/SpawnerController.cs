@@ -8,13 +8,12 @@ namespace MultiplayerPrototype.Controllers
 {
     public class SpawnerController : MonoBehaviour
     {
-        [Header("Spawn Settings")] [Range(0f, 20f)] [SerializeField]
-        float min = 5f;
-
+        [Header("Spawn Settings")]
+        [Range(0f, 20f)] [SerializeField] float min = 5f;
         [Range(0f, 20f)] [SerializeField] float max = 10f;
 
         [Header("Enemy Prefabs")] [SerializeField]
-        EnemyController _enemyPrefab;
+        EnemyController[] _enemyPrefabs;
 
         float _maxDelayTime;
         float _currentTime;
@@ -41,7 +40,7 @@ namespace MultiplayerPrototype.Controllers
 
         private void Spawn()
         {
-           IEntityController newEnemy = Instantiate(_enemyPrefab, transform.position, transform.rotation);
+           IEntityController newEnemy = Instantiate(_enemyPrefabs[0], transform.position, transform.rotation);
            newEnemy.transform.parent = this.transform;
         }
     }
