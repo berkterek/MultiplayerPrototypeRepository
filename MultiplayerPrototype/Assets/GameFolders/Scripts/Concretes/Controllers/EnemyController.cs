@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using MultiplayerPrototype.Abstracts.Controllers;
 using MultiplayerPrototype.Abstracts.Movements;
+using MultiplayerPrototype.Enums;
+using MultiplayerPrototype.Managers;
 using MultiplayerPrototype.Movements;
 using UnityEngine;
 
 namespace MultiplayerPrototype.Controllers
 {
-    public class EnemyController : MonoBehaviour, IEntityController
+    public class EnemyController : MonoBehaviour, IEnemyController
     {
         [SerializeField] float _moveSpeed = 10f;
         [SerializeField] float _maxLifeTime = 10f;
-
+        [SerializeField] EnemyEnum _enemyEnum;
+        
         IMover _mover;
         float _currentLifeTime;
+
+        public EnemyEnum EnemyEnum => _enemyEnum;
 
         private void Awake()
         {
@@ -36,10 +41,10 @@ namespace MultiplayerPrototype.Controllers
             _mover.TickFixed(-1, _moveSpeed);
         }
 
-        //Object Pooling Pattern will be use
+        
         private void KillYourself()
         {
-            Destroy(this.gameObject);
+            EnemyManager.Instance.SetObjectPool(this);
         }
     }
 }

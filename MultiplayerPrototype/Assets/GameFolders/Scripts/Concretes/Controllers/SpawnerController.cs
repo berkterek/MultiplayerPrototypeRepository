@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using MultiplayerPrototype.Abstracts.Controllers;
+using MultiplayerPrototype.Enums;
+using MultiplayerPrototype.Managers;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace MultiplayerPrototype.Controllers
 {
@@ -12,11 +13,10 @@ namespace MultiplayerPrototype.Controllers
         [Range(0f, 20f)] [SerializeField] float min = 5f;
         [Range(0f, 20f)] [SerializeField] float max = 10f;
 
-        [Header("Enemy Prefabs")] [SerializeField]
-        EnemyController[] _enemyPrefabs;
-
         float _maxDelayTime;
-        float _currentTime;
+        float _currentSpawnTime;
+        float _currentLevelTime;
+        int _index;
 
         public float RandomSpawnTime => Random.Range(min, max);
 
@@ -27,21 +27,37 @@ namespace MultiplayerPrototype.Controllers
 
         private void Update()
         {
-            _currentTime += Time.deltaTime;
+            _currentSpawnTime += Time.deltaTime;
 
-            if (_currentTime > _maxDelayTime)
+            if (_currentSpawnTime > _maxDelayTime)
             {
                 Spawn();
 
-                _currentTime = 0f;
+                _currentSpawnTime = 0f;
                 _maxDelayTime = RandomSpawnTime;
+            }
+
+            if (_currentLevelTime < Time.time)
+            {
+                _currentLevelTime = Time.time + 60f;
+                SetNewEnemyIndex();
             }
         }
 
         private void Spawn()
         {
-           IEntityController newEnemy = Instantiate(_enemyPrefabs[0], transform.position, transform.rotation);
-           newEnemy.transform.parent = this.transform;
+            IEnemyController newEnemy = EnemyManager.Instance.GetObjectPool((EnemyEnum)Random.Range(0,_index));
+            newEnemy.transform.position = this.transform.position;
+            newEnemy.transform.parent = this.transform;
+            newEnemy.transform.gameObject.SetActive(true);
+        }
+
+        private void SetNewEnemyIndex()
+        {
+            if (_index < EnemyManager.Instance.Count)
+            {
+                _index++;
+            }
         }
     }
 }

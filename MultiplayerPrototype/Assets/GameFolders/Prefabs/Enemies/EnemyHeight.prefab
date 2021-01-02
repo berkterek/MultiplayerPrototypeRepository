@@ -96,10 +96,15 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6382956203596040092, guid: 867948a7df82cde4185b079b5f7bd564,
+        type: 3}
+      propertyPath: _enemyEnum
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8843355383235406219, guid: 867948a7df82cde4185b079b5f7bd564,
         type: 3}
       propertyPath: m_Name
-      value: EnemyTall
+      value: EnemyHeight
       objectReference: {fileID: 0}
     - target: {fileID: 9216031464220957924, guid: 867948a7df82cde4185b079b5f7bd564,
         type: 3}
