@@ -18,4 +18,4 @@ MonoBehaviour:
     type: 3}
   _skyBox: {fileID: 2100000, guid: 966766f4829d6ad419eaaf7cf0712f85, type: 2}
   _moveSpeed: 25
-  _newEnemyTime: 30
+  _newEnemyTime: 25

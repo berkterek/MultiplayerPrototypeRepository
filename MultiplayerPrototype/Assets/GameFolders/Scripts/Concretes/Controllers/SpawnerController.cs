@@ -4,7 +4,6 @@ using MultiplayerPrototype.Abstracts.Controllers;
 using MultiplayerPrototype.Enums;
 using MultiplayerPrototype.Managers;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace MultiplayerPrototype.Controllers
 {

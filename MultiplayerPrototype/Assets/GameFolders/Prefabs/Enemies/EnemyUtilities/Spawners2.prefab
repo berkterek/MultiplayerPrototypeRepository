@@ -10,12 +10,12 @@ PrefabInstance:
     - target: {fileID: 176821197608135295, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4,
         type: 3}
       propertyPath: max
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 176821197608135295, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4,
         type: 3}
       propertyPath: min
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3081663554938313894, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4,
         type: 3}
@@ -80,22 +80,32 @@ PrefabInstance:
     - target: {fileID: 4404858188198221067, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4,
         type: 3}
       propertyPath: max
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4404858188198221067, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4,
         type: 3}
       propertyPath: min
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404858188342196244, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4,
+        type: 3}
+      propertyPath: max
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4404858188342196244, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4,
+        type: 3}
+      propertyPath: min
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4404858188806476686, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4,
         type: 3}
       propertyPath: max
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4404858188806476686, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4,
         type: 3}
       propertyPath: min
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cb6643fc9ef7514bad6b26ad2ebecc4, type: 3}
